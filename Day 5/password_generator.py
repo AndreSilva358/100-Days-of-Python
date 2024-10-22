@@ -1,36 +1,25 @@
-#Password Generator Project
 import random
 
+# Lists containing elements to be used in the password generation
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+# Receiving user input
 print("Welcome to the PyPassword Generator!")
 nr_letters= int(input("How many letters would you like in your password?\n")) 
 nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-#Eazy Level - Order not randomised:
-#e.g. 4 letter, 2 symbol, 2 number = JduE&!91
+# Utilising random module to pick items from within the lists
+# random.choices(list, k = length)
 letters_user = random.choices(letters, k = nr_letters)
 symbols_user= random.choices(symbols, k = nr_symbols)
 numbers_user = random.choices(numbers, k = nr_numbers)
 
-debugg = letters_user + symbols_user + numbers_user
-joined = ''.join(debugg)
+password = letters_user + symbols_user + numbers_user
 
-print(joined)
+random.shuffle(password)
+shuffled_password = ''.join(password)
 
-shuffled = "".join(random.sample(joined, len(joined)))
-
-print(joined)
-
-#password = letters_user
-#password = password.append(numbers)
-
-
-
-##while nr_letters 
-
-#Hard Level - Order of characters randomised:
-#e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+print(shuffled_password)
